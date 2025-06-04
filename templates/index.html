@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictor de Precios de Vehículos</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-car"></i> Predictor de Precios de Vehículos</h1>
+            <p>Utiliza inteligencia artificial para estimar el valor de tu vehículo</p>
+        </header>
+
+        <div class="form-container">
+            <form id="prediction-form">
+                <div class="form-group">
+                    <label for="brand">Marca:</label>
+                    <select id="brand" name="brand" required>
+                        <option value="" disabled selected>Selecciona una marca</option>
+                        <option value="volkswagen">Volkswagen</option>
+                        <option value="audi">Audi</option>
+                        <option value="bmw">BMW</option>
+                        <option value="mercedes_benz">Mercedes-Benz</option>
+                        <option value="opel">Opel</option>
+                        <option value="ford">Ford</option>
+                        <option value="smart">Smart</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="model">Modelo:</label>
+                    <select id="model" name="model" required>
+                        <option value="" disabled selected>Selecciona un modelo</option>
+                        <option value="golf">Golf</option>
+                        <option value="3er">3er</option>
+                        <option value="c_klasse">Clase C</option>
+                        <option value="astra">Astra</option>
+                        <option value="focus">Focus</option>
+                        <option value="fortwo">Fortwo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="vehicle_type">Tipo de Vehículo:</label>
+                    <select id="vehicle_type" name="vehicle_type" required>
+                        <option value="" disabled selected>Selecciona un tipo</option>
+                        <option value="sedan">Sedán</option>
+                        <option value="small">Pequeño</option>
+                        <option value="suv">SUV</option>
+                        <option value="wagon">Familiar</option>
+                        <option value="bus">Furgoneta</option>
+                        <option value="coupe">Coupé</option>
+                        <option value="convertible">Convertible</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="gearbox">Caja de Cambios:</label>
+                    <select id="gearbox" name="gearbox" required>
+                        <option value="" disabled selected>Selecciona tipo</option>
+                        <option value="manual">Manual</option>
+                        <option value="auto">Automático</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fuel_type">Tipo de Combustible:</label>
+                    <select id="fuel_type" name="fuel_type" required>
+                        <option value="" disabled selected>Selecciona combustible</option>
+                        <option value="gasoline">Gasolina</option>
+                        <option value="diesel">Diésel</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="power">Potencia (CV):</label>
+                    <input type="number" id="power" name="power" min="50" max="500" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mileage">Kilometraje:</label>
+                    <input type="number" id="mileage" name="mileage" min="0" max="300000" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="car_age">Edad del Vehículo (años):</label>
+                    <input type="number" id="car_age" name="car_age" min="0" max="30" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="not_repaired">¿Sin Reparar?</label>
+                    <select id="not_repaired" name="not_repaired" required>
+                        <option value="0">No</option>
+                        <option value="1">Sí</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="predict-button">
+                        <i class="fas fa-calculator"></i> Calcular Precio
+                    </button>
+                    <button type="reset" id="reset-button">
+                        <i class="fas fa-undo"></i> Reiniciar
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div id="results" class="results-container hidden">
+            <h2>Resultado de la Predicción</h2>
+            <div class="result-card">
+                <div class="result-item">
+                    <p>Precio Estimado (EUR):</p>
+                    <h3 id="precio-eur">0.00 €</h3>
+                </div>
+                <div class="result-item">
+                    <p>Precio Estimado (USD):</p>
+                    <h3 id="precio-usd">$0.00</h3>
+                </div>
+            </div>
+            <div class="precision-note">
+                <p><i class="fas fa-info-circle"></i> Esta estimación tiene una precisión aproximada del 73% basada en datos históricos.</p>
+            </div>
+        </div>
+
+        <div class="loading hidden" id="loading">
+            <div class="spinner"></div>
+            <p>Calculando precio...</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Modelo Random Forest para Predicción de Precios</p>
+    </footer>
+    <script src="../static/js/script.js"></script>
+</body>
+</html>
