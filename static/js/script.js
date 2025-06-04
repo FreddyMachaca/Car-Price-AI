@@ -7,6 +7,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const API_URL = 'http://localhost:5000';
 
+    const formGroups = document.querySelectorAll('.form-group');
+    formGroups.forEach((group, index) => {
+        group.style.animationDelay = `${0.1 * (index + 1)}s`;
+    });
+    
+    const inputs = document.querySelectorAll('input, select');
+    inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+        });
+        
+        input.addEventListener('blur', function() {
+            this.parentElement.classList.remove('focused');
+        });
+    });
+
     function enviarDatos(formData) {
         return fetch(`${API_URL}/predict`, {
             method: 'POST',
@@ -47,7 +63,10 @@ document.addEventListener('DOMContentLoaded', function() {
             
             precioEUR.textContent = `${data.eur.toLocaleString('es-ES')} €`;
             precioUSD.textContent = `$${data.usd.toLocaleString('en-US')}`;
+            
             resultsContainer.classList.remove('hidden');
+            
+            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
         })
         .catch(error => {
             console.error('Error:', error);

@@ -6,18 +6,19 @@
     <title>Predictor de Precios de Vehículos</title>
     <link rel="stylesheet" href="../static/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Calcula el precio de tu vehículo usando inteligencia artificial avanzada con un alto nivel de precisión">
 </head>
 <body>
     <div class="container">
         <header>
             <h1><i class="fas fa-car"></i> Predictor de Precios de Vehículos</h1>
-            <p>Utiliza inteligencia artificial para estimar el valor de tu vehículo</p>
+            <p>Utiliza inteligencia artificial con random forest para estimar el valor de tu vehículo</p>
         </header>
 
         <div class="form-container">
             <form id="prediction-form">
                 <div class="form-group">
-                    <label for="brand">Marca:</label>
+                    <label for="brand"><i class="fas fa-trademark"></i> Marca:</label>
                     <select id="brand" name="brand" required>
                         <option value="" disabled selected>Selecciona una marca</option>
                         <option value="volkswagen">Volkswagen</option>
@@ -31,7 +32,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="model">Modelo:</label>
+                    <label for="model"><i class="fas fa-tag"></i> Modelo:</label>
                     <select id="model" name="model" required>
                         <option value="" disabled selected>Selecciona un modelo</option>
                         <option value="golf">Golf</option>
@@ -44,7 +45,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="vehicle_type">Tipo de Vehículo:</label>
+                    <label for="vehicle_type"><i class="fas fa-car-side"></i> Tipo de Vehículo:</label>
                     <select id="vehicle_type" name="vehicle_type" required>
                         <option value="" disabled selected>Selecciona un tipo</option>
                         <option value="sedan">Sedán</option>
@@ -58,7 +59,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="gearbox">Caja de Cambios:</label>
+                    <label for="gearbox"><i class="fas fa-cogs"></i> Caja de Cambios:</label>
                     <select id="gearbox" name="gearbox" required>
                         <option value="" disabled selected>Selecciona tipo</option>
                         <option value="manual">Manual</option>
@@ -67,7 +68,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="fuel_type">Tipo de Combustible:</label>
+                    <label for="fuel_type"><i class="fas fa-gas-pump"></i> Tipo de Combustible:</label>
                     <select id="fuel_type" name="fuel_type" required>
                         <option value="" disabled selected>Selecciona combustible</option>
                         <option value="gasoline">Gasolina</option>
@@ -76,22 +77,22 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="power">Potencia (CV):</label>
-                    <input type="number" id="power" name="power" min="50" max="500" required>
+                    <label for="power"><i class="fas fa-bolt"></i> Potencia (CV):</label>
+                    <input type="number" id="power" name="power" min="50" max="500" placeholder="Ej: 120" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="mileage">Kilometraje:</label>
-                    <input type="number" id="mileage" name="mileage" min="0" max="300000" required>
+                    <label for="mileage"><i class="fas fa-road"></i> Kilometraje:</label>
+                    <input type="number" id="mileage" name="mileage" min="0" max="300000" placeholder="Ej: 50000" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="car_age">Edad del Vehículo (años):</label>
-                    <input type="number" id="car_age" name="car_age" min="0" max="30" required>
+                    <label for="car_age"><i class="fas fa-calendar-alt"></i> Edad del Vehículo (años):</label>
+                    <input type="number" id="car_age" name="car_age" min="0" max="30" placeholder="Ej: 5" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="not_repaired">¿Sin Reparar?</label>
+                    <label for="not_repaired"><i class="fas fa-wrench"></i> ¿Sin Reparar?</label>
                     <select id="not_repaired" name="not_repaired" required>
                         <option value="0">No</option>
                         <option value="1">Sí</option>
@@ -110,30 +111,30 @@
         </div>
 
         <div id="results" class="results-container hidden">
-            <h2>Resultado de la Predicción</h2>
+            <h2><i class="fas fa-chart-line"></i> Resultado de la Predicción</h2>
             <div class="result-card">
                 <div class="result-item">
-                    <p>Precio Estimado (EUR):</p>
+                    <p><i class="fas fa-euro-sign"></i> Precio Estimado (EUR):</p>
                     <h3 id="precio-eur">0.00 €</h3>
                 </div>
                 <div class="result-item">
-                    <p>Precio Estimado (USD):</p>
+                    <p><i class="fas fa-dollar-sign"></i> Precio Estimado (USD):</p>
                     <h3 id="precio-usd">$0.00</h3>
                 </div>
             </div>
             <div class="precision-note">
-                <p><i class="fas fa-info-circle"></i> Esta estimación tiene una precisión aproximada del 73% basada en datos históricos.</p>
+                <p><i class="fas fa-info-circle"></i> Esta estimación tiene una precisión aproximada del 73% basada en análisis de datos históricos y algoritmos de aprendizaje automático.</p>
             </div>
         </div>
 
         <div class="loading hidden" id="loading">
             <div class="spinner"></div>
-            <p>Calculando precio...</p>
+            <p>Calculando precio con IA...</p>
         </div>
     </div>
 
     <footer>
-        <p>Modelo Random Forest para Predicción de Precios</p>
+        <p><i class="fas fa-robot"></i> Modelo Random Forest para Predicción de Precios | <i class="fas fa-code"></i> Versión 2.0</p>
     </footer>
     <script src="../static/js/script.js"></script>
 </body>
